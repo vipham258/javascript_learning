@@ -1,4 +1,9 @@
-const myName = "Vi Pham";
+/**
+ *  @fileOverview Print out the column names
+ *  @author       Vi Thi Phuong Pham
+ */
+
+const myName = "Vi Thi Phuong Pham";
 const columnName = [
   "CheeseId",
   "CheeseNameEn",
@@ -31,6 +36,8 @@ const columnName = [
   "RindTypeFr",
   "LastUpdateDate"
 ];
+
+// Print out my name, column names
 console.log(myName);
 console.log("This is column names");
-console.log(columnName);
+console.log(columnName.join("\n"));
