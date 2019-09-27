@@ -1,8 +1,16 @@
+/**
+ *  @fileOverview Using file-IO to read and collect 5 records from a CSV file. Create 5 object in memory with that 5 records and print it out.
+ *  @author       Vi Thi Phuong Pham
+ */
+
+//import fs, readline
 const fs = require("fs");
 const readline = require("readline");
 
+//print out my name
 console.log("Name: Vi Thi Phuong Pham - 040886894");
 
+//path to the csv file
 let path = "javascript_learning\\canadianCheeseDirectory.csv";
 let max = 5;
 let counter = 0;
@@ -55,11 +63,9 @@ rl.on("line", d => {
 
     //put the first array of rows into header
     header = rows[0];
-    //console.log(header);
 
     //put the leftover data into data array
     data = rows.slice(1);
-    //console.log(data);
 
     //convert rows into objects
     const output = data.map(row => {
@@ -67,6 +73,7 @@ rl.on("line", d => {
       const obj = {};
       //for each header, put data into object
       header.forEach((h, index) => (obj[h] = row[index]));
+      //print out the object
       console.log(obj);
     });
   }
