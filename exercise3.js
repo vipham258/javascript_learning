@@ -1,6 +1,8 @@
 const fs = require("fs");
 const readline = require("readline");
 
+console.log("Name: Vi Thi Phuong Pham - 040886894");
+
 let path = "javascript_learning\\canadianCheeseDirectory.csv";
 let max = 5;
 let counter = 0;
@@ -19,39 +21,53 @@ let readFile = fs.createReadStream(path);
 let rl = readline.createInterface({ input: readFile });
 rl.on("line", d => {
   //put the line into an array
-  //console.log(data.split(","));
   totalRows.push(d.split(","));
-  rows = [
-    totalRows[0],
-    totalRows[1],
-    totalRows[3],
-    totalRows[5],
-    totalRows[6],
-    totalRows[8]
-  ];
-  //put column names into header
-  header = rows[0];
-  data = rows.slice(1);
+
   if (counter++ >= max) {
     //stop reading
     rl.close();
     rl.removeAllListeners();
-    console.log(rows);
-    console.log(header);
+
+    //loop through totalrows to get data with selected columns
+    //put it into rows. So now rows is perfect data
+    for (var i = 0; i <= max; i++) {
+      rows.push([
+        totalRows[i][0],
+        totalRows[i][1],
+        totalRows[i][3],
+        totalRows[i][5],
+        totalRows[i][6],
+        totalRows[i][8],
+        totalRows[i][10],
+        totalRows[i][11],
+        totalRows[i][12],
+        totalRows[i][14],
+        totalRows[i][16],
+        totalRows[i][18],
+        totalRows[i][20],
+        totalRows[i][21],
+        totalRows[i][23],
+        totalRows[i][25],
+        totalRows[i][27],
+        totalRows[i][29]
+      ]);
+    }
+
+    //put the first array of rows into header
+    header = rows[0];
+    //console.log(header);
+
+    //put the leftover data into data array
+    data = rows.slice(1);
+    //console.log(data);
+
+    //convert rows into objects
+    const output = data.map(row => {
+      //create object obj
+      const obj = {};
+      //for each header, put data into object
+      header.forEach((h, index) => (obj[h] = row[index]));
+      console.log(obj);
+    });
   }
 });
-
-// var Converter = require("csvtojson").Converter;
-// var converter = new Converter({});
-// converter.fromFile("javascript_learning\\canadianCheeseDirectory.csv",function(err,result){
-//   var csvData = JSON.stringify
-//   ([
-//     {resultdata : result[0]},
-//     {resultdata : result[1]},
-//     {resultdata : result[2]},
-//     {resultdata : result[3]},
-//     {resultdata : result[4]}
-//   ]);
-//   csvData = JSON.parse(csvData);
-//   console.log(csvData);
-// });
