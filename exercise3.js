@@ -7,13 +7,39 @@
 const fs = require("fs");
 const readline = require("readline");
 
+//regex expression for (,)
+const regex = /,(?=(?:[^"]*"[^"]*")*[^"]*$)/;
+
 //print out my name
 console.log("Name: Vi Thi Phuong Pham - 040886894");
 
 //path to the csv file
-let path = "javascript_learning\\canadianCheeseDirectory.csv";
+let path = "canadianCheeseDirectory.csv";
 let max = 5;
 let counter = 0;
+
+//create an array of selected column index
+let columnIndex = [
+  0,
+  1,
+  3,
+  5,
+  6,
+  8,
+  10,
+  11,
+  12,
+  14,
+  16,
+  18,
+  20,
+  21,
+  23,
+  25,
+  27,
+  29
+];
+
 //create an array of rows
 let totalRows = [];
 
@@ -29,7 +55,7 @@ let readFile = fs.createReadStream(path);
 let rl = readline.createInterface({ input: readFile });
 rl.on("line", d => {
   //put the line into an array
-  totalRows.push(d.split(","));
+  totalRows.push(d.split(regex));
 
   if (counter++ >= max) {
     //stop reading
@@ -38,43 +64,35 @@ rl.on("line", d => {
 
     //loop through totalrows to get data with selected columns
     //put it into rows. So now rows is perfect data
-    for (var i = 0; i <= max; i++) {
-      rows.push([
-        totalRows[i][0],
-        totalRows[i][1],
-        totalRows[i][3],
-        totalRows[i][5],
-        totalRows[i][6],
-        totalRows[i][8],
-        totalRows[i][10],
-        totalRows[i][11],
-        totalRows[i][12],
-        totalRows[i][14],
-        totalRows[i][16],
-        totalRows[i][18],
-        totalRows[i][20],
-        totalRows[i][21],
-        totalRows[i][23],
-        totalRows[i][25],
-        totalRows[i][27],
-        totalRows[i][29]
-      ]);
+    for (let i = 0; i <= max; i++) {
+      let row = [];
+      for (const col of columnIndex) {
+        row.push(totalRows[i][col]);
+      }
+      rows.push(row);
     }
-
     //put the first array of rows into header
     header = rows[0];
+
+    //console.log(header);
 
     //put the leftover data into data array
     data = rows.slice(1);
 
     //convert rows into objects
-    const output = data.map(row => {
+    const cheeseRecordList = data.map((rowData, rowIndex) => {
       //create object obj
-      const obj = {};
+      const cheeseRecord = {};
       //for each header, put data into object
-      header.forEach((h, index) => (obj[h] = row[index]));
+      header.forEach((headerName, colIndex) => {
+        cheeseRecord[headerName] = rowData[colIndex];
+      });
+
       //print out the object
-      console.log(obj);
+      // console.log(cheeseRecord);
+      return cheeseRecord;
     });
+
+    console.log(cheeseRecordList);
   }
 });
