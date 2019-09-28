@@ -74,8 +74,6 @@ rl.on("line", d => {
     //put the first array of rows into header
     header = rows[0];
 
-    //console.log(header);
-
     //put the leftover data into data array
     data = rows.slice(1);
 
