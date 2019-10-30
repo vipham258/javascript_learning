@@ -116,7 +116,7 @@ rl.on("close", () => {
 
     return cheeseRecord;
   });
-  //console.log(records);
+  console.log(records);
 
   //Sort cheese objects by cheeseID
   sortByID(records);
