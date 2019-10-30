@@ -11,7 +11,7 @@ const readline = require("readline");
 const regex = /,(?=(?:[^"]*"[^"]*")*[^"]*$)/;
 
 //print out my name
-console.log("Name: Vi Thi Phuong Pham - 040886894");
+console.log("Program by: Vi Thi Phuong Pham - 040886894");
 
 //path to the csv file
 let path = "canadianCheeseDirectory.csv";
@@ -69,6 +69,7 @@ rl.on("line", d => {
       for (const col of columnIndex) {
         row.push(totalRows[i][col]);
       }
+      //console.log(row);
       rows.push(row);
     }
     //put the first array of rows into header
