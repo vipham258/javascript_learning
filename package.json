@@ -1,0 +1,25 @@
+{
+  "name": "javascript_learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exercise1.js",
+  "dependencies": {
+    "eslint": "^6.4.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vipham258/javascript_learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vipham258/javascript_learning/issues"
+  },
+  "homepage": "https://github.com/vipham258/javascript_learning#readme"
+}

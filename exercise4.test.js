@@ -1,4 +1,4 @@
-const { sortByID } = require("./exercise4");
+const { sortByID } = require("./sort");
 
 const testRecords = [
   {
@@ -210,9 +210,7 @@ const expectedRecords = [
 
 //unit test using jest
 test("Name: Vi Pham Thi Phuong 040886894 \n records can be is the same", () => {
-  sortByID(testRecords);
-  testRecords.forEach((element, i) =>
-    expect(element).toEqual(expectedRecords[i])
-  );
-  expect(testRecords.length).toEqual(expectedRecords.length);
+  const actual = sortByID(testRecords);
+  actual.forEach((element, i) => expect(element).toEqual(expectedRecords[i]));
+  expect(actual.length).toEqual(expectedRecords.length);
 });
